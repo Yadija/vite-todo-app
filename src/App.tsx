@@ -6,7 +6,7 @@ function App() {
   return (
     <div className='dark'>
       <div className='h-screen w-full bg-softPeach text-funBLue dark:bg-balticSea dark:text-denimBLue'>
-        <nav className='fixed left-0 right-0 top-0 flex justify-between px-5 py-3'>
+        <nav className='fixed inset-x-0 top-0 flex justify-between px-5 py-3'>
           <h1 className='text-xl font-bold'>Todo App</h1>
           <div>
             <ul>
@@ -21,7 +21,7 @@ function App() {
           <form className='flex gap-4 pb-6'>
             <input
               type='text'
-              className='focus:ring-blueborder-blue-300 w-full px-4 py-2 focus:border-blue-300 focus:outline-none focus:ring-2 dark:bg-softPeach dark:text-balticSea'
+              className='w-full border-blue-300 px-4 py-2 focus:border-blue-300 focus:outline-none focus:ring-2 dark:bg-softPeach dark:text-balticSea'
               placeholder='Add...'
             />
             <button className='bg-funBLue px-4 py-2 font-bold text-softPeach dark:bg-denimBLue dark:text-balticSea'>
@@ -33,7 +33,7 @@ function App() {
           <div className='mb-6'>
             <input
               type='text'
-              className='focus:ring-blueborder-blue-300 w-full px-4 py-2  focus:border-blue-300  focus:outline-none focus:ring-2 dark:bg-softPeach dark:text-balticSea'
+              className='w-full border-blue-300 px-4 py-2  focus:border-blue-300  focus:outline-none focus:ring-2 dark:bg-softPeach dark:text-balticSea'
               placeholder='Search...'
             />
           </div>
