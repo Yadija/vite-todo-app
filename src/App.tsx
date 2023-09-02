@@ -1,4 +1,5 @@
-import { FormEvent, KeyboardEvent } from 'react';
+import { FormEvent, KeyboardEvent, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import Input from './components/Input';
 import Navbar from './components/Navbar';
@@ -7,31 +8,41 @@ import Tasks from './components/Tasks';
 import { Task } from './interface/Task';
 
 function App() {
-  const tasks: Task[] = [
-    { name: 'First Task', id: '1', done: false },
-    { name: 'Second Task', id: '2', done: false },
-    { name: 'Third Task', id: '3', done: true },
-  ];
-  const query = 'query';
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [query, setQuery] = useState<string>('');
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>, value: string) => {
     event.preventDefault();
 
-    console.log(value);
+    const newTask = {
+      name: value,
+      done: false,
+      id: uuidv4(),
+    };
+
+    setTasks((tasks) => [...tasks, newTask]);
   };
 
   const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
     event.preventDefault();
-    console.log((event.target as HTMLInputElement).value);
-    console.log(query);
+
+    setQuery((event.target as HTMLInputElement).value);
   };
 
   const toggleDoneTask = (id: string, done: boolean) => {
-    console.log(id, done);
+    setTasks((tasks) =>
+      tasks.map((task) => {
+        if (task.id === id) {
+          task.done = done;
+        }
+
+        return task;
+      }),
+    );
   };
 
   const handleDeleteTask = (id: string) => {
-    console.log(id);
+    setTasks((tasks) => tasks.filter((task) => task.id !== id));
   };
 
   return (
@@ -45,6 +56,7 @@ function App() {
             tasks={tasks}
             toggleDone={toggleDoneTask}
             handleDelete={handleDeleteTask}
+            query={query}
           />
         </section>
       </div>
