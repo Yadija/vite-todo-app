@@ -46,20 +46,18 @@ function App() {
   };
 
   return (
-    <div className='dark'>
-      <div className='h-screen w-full bg-softPeach text-funBLue dark:bg-balticSea dark:text-denimBLue'>
-        <Navbar />
-        <section className='flex flex-col justify-center px-8 pt-20 sm:m-auto sm:w-[640px]'>
-          <Input handleSubmit={handleSubmit} />
-          <Search handleSearch={handleSearch} />
-          <Tasks
-            tasks={tasks}
-            toggleDone={toggleDoneTask}
-            handleDelete={handleDeleteTask}
-            query={query}
-          />
-        </section>
-      </div>
+    <div className='h-screen w-full bg-softPeach text-funBLue transition-all duration-1000 dark:bg-balticSea dark:text-denimBLue'>
+      <Navbar />
+      <section className='flex flex-col justify-center px-8 pt-20 sm:m-auto sm:w-[640px]'>
+        <Input handleSubmit={handleSubmit} />
+        <Search handleSearch={handleSearch} />
+        <Tasks
+          tasks={tasks}
+          toggleDone={toggleDoneTask}
+          handleDelete={handleDeleteTask}
+          query={query}
+        />
+      </section>
     </div>
   );
 }
